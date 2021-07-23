@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import { Component, Inject, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { PointRelai } from '../model/pointrelai';
 import { PointRelaisService } from '../pointrelai.service';
 
@@ -10,18 +12,25 @@ import { PointRelaisService } from '../pointrelai.service';
 })
 export class ListPointrelaisComponent implements OnInit {
 
-  constructor(private api : PointRelaisService) { }
+  constructor(private api: PointRelaisService, @Inject(DOCUMENT) private document:Document) { }
 
   ngOnInit(): void {
     this.getPRS();
   }
 
-  pointRelais : PointRelai[] = [];
+  pointRelais: PointRelai[] = [];
+  choosePointRelais : PointRelai;
 
-  getPRS(){
+  getPRS() {
     this.api.getPRS().subscribe(
-      (data) => {this.pointRelais = data}
+      (data) => { this.pointRelais = data }
     )
+  }
+
+  selectPointRelais(pointrelai): void {
+    console.log(pointrelai);
+    console.log(pointrelai.id);
+    this.document.location.href= 'http://localhost:3000/pointsRelais/' + pointrelai.id;
   }
 
 }

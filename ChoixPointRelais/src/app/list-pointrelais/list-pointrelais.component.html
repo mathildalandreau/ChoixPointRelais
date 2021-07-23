@@ -1,8 +1,28 @@
-<h1 class='center'>PointRelais</h1>
-<div class='container'>
-<div class="row">
-<div *ngFor='let pointrelai of pointRelais' class="col s6 m4">
-<p>{{pointrelai.name}}</p>
-</div>
-</div>
+<div id="center">
+    <h4>Choisissez un Transporteur :</h4>
+    <div class='container'>
+        <div id="h4Transporteur">
+            <div id="divParentChoixTransporteur">
+                <form class="formChoixTransporteur" *ngFor='let pointrelai of pointRelais'>
+                    <div class="eachLeftPanel">
+                        <div class="divEachTransporteur">
+                            <label>Nom :</label>
+                            <label> {{pointrelai.name}} </label>
+                        </div>
+                        <div class="divEachTransporteur">
+                            <label>Ville :</label>
+                            <label> {{pointrelai.adresse.ville}} </label>
+                        </div>
+                    </div>
+                    <div class="eachRightPanel">
+                        <a #btnChoixTransporteur (click)="selectPointRelais(pointrelai)">choisir ce point relais</a>
+                    </div>
+                </form>
+                <div id="parentLienPanier">
+                    <div> lien pour revenir en arrière </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
