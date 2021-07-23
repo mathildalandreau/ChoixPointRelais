@@ -21,6 +21,16 @@ export class PointRelaisService {
     return this.http.get<PointRelai[]>(API_URL,{headers}).pipe( catchError(this.handleError));
   }
 
+  getPR(id: number): Observable<PointRelai>{
+
+    const url = `${API_URL}/${id}`; 
+    return this.http.get<PointRelai>(url).pipe(
+      tap(_=> this.log(`fetched pokemon id = ${id}`)),
+      catchError(this.handleErrorBis<PointRelai>(`get point relai id=${id}`))
+    );
+
+  }
+
   
   createPR(pointrelai: PointRelai) : Observable<any>{
     let body = JSON.stringify(pointrelai);
@@ -32,5 +42,26 @@ export class PointRelaisService {
   private handleError(error : Response | any) {
     return Observable.throw(error);
   }
+
+  searchPointRelais(term: string): Observable<PointRelai[]>{
+    if(!term.trim()){
+      return of([])
+    }
+    return this.http.get<PointRelai[]>(`${API_URL}/?name=${term}`).pipe(
+      tap(_=> this.log(`found pokemons matching ${term}`)),
+      catchError(this.handleErrorBis<PointRelai[]>(`search Point Relais`, []))
+    );
+  }
  
+  private log(log:string){
+    console.log(log)
+  }
+
+  handleErrorBis<T>(operation='operation', result?: T){
+    return (error: any): Observable<T> => {
+      console.log(error);
+      console.log(`${operation} failed: ${error.message}`);
+      return of(result as T);
+    };
+  } 
 }
