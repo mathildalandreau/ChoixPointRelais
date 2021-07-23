@@ -21,14 +21,10 @@ export class PointRelaisService {
     return this.http.get<PointRelai[]>(API_URL,{headers}).pipe( catchError(this.handleError));
   }
 
-  getPR(id: number): Observable<PointRelai>{
-
-    const url = `${API_URL}/${id}`; 
-    return this.http.get<PointRelai>(url).pipe(
-      tap(_=> this.log(`fetched pokemon id = ${id}`)),
-      catchError(this.handleErrorBis<PointRelai>(`get point relai id=${id}`))
-    );
-
+  getPRbyId(prId : string) : Observable<PointRelai> {
+    const headers = new HttpHeaders().set("Content-Type", "applcation/json");
+    return this.http.get<PointRelai>(API_URL + prId, {headers})
+    .pipe(catchError(this.handleError));
   }
 
   

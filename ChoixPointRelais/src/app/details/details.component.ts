@@ -13,17 +13,17 @@ export class DetailsComponent implements OnInit {
   pointRelais: PointRelai[] = [];
   pointRelai: PointRelai = new PointRelai;
 
-  constructor(private route: ActivatedRoute, private router: Router, private pointRelaisService:PointRelaisService) { }
+  constructor(private route: ActivatedRoute, private router: Router, private pointRelaisService: PointRelaisService) { }
 
   ngOnInit(): void {
-    let id = +this.route.snapshot.paramMap.get('id');
+    let id = this.route.snapshot.paramMap.get('id');
 
-    this.pointRelaisService.getPR(id)
-    .subscribe(pointRelai => this.pointRelai = this.pointRelai);
+    this.pointRelaisService.getPRbyId(id)
+      .subscribe(pointRelai => this.pointRelai = this.pointRelai);
   }
 
   goBack(): void {
     this.router.navigate(['/pointsRelais']);
-}
+  }
 
 }
