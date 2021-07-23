@@ -5,11 +5,15 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { ListPointrelaisComponent } from './list-pointrelais/list-pointrelais.component';
+import { SearchComponent } from './search/search.component';
+import { DetailsComponent } from './details/details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ListPointrelaisComponent
+    ListPointrelaisComponent,
+    SearchComponent,
+    DetailsComponent
   ],
   imports: [
     BrowserModule,

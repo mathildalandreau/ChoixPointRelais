@@ -1,0 +1,32 @@
+<div *ngIf="pointRelai" class="row">
+    <div class="col s12 m8 offset-m2">
+    <h2 class="header center">{{ pointRelai.name }}</h2>
+    <div class="card horizontal hoverable">
+      <div class="card-stacked">
+        <div class="card-content">
+          <table class="bordered striped">
+            <tbody>
+              <tr>
+                <td>Nom</td>
+                <td><strong>{{ pointRelai.name }}</strong></td>
+              </tr>
+              <tr>
+                <td>Adresse</td>
+                <td><strong>{{ pointRelai.adresse.rue }}</strong></td>
+                <td><strong>{{ pointRelai.adresse.codePostal }}</strong></td>
+                <td><strong>{{ pointRelai.adresse.ville }}</strong></td>
+              </tr>
+             
+            </tbody>
+          </table>
+        </div>
+        <div class="card-action">
+          <a (click)="goBack()" class="waves-effect waves-light btn">Retour</a>
+        </div>
+
+      </div>
+    </div>
+    </div>
+    </div>
+    <h4 *ngIf='!pointRelai' class="center">Erreur affichage point relai</h4>
+    
