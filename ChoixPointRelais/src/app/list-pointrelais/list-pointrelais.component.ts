@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { PointRelai } from '../model/pointrelai';
 import { PointRelaisService } from '../pointrelai.service';
 
+import { ActivatedRoute } from '@angular/router';
+
 
 @Component({
   selector: 'app-list-pointrelais',
@@ -12,7 +14,7 @@ import { PointRelaisService } from '../pointrelai.service';
 })
 export class ListPointrelaisComponent implements OnInit {
 
-  constructor(private api: PointRelaisService, @Inject(DOCUMENT) private document:Document) { }
+  constructor(private api: PointRelaisService, @Inject(DOCUMENT) private document:Document, private router: Router,  private route : ActivatedRoute,) { }
 
   ngOnInit(): void {
     this.getPRS();
@@ -30,7 +32,8 @@ export class ListPointrelaisComponent implements OnInit {
   selectPointRelais(pointrelai): void {
     console.log(pointrelai);
     console.log(pointrelai.id);
-    this.document.location.href= 'http://localhost:3000/pointsRelais/' + pointrelai.id;
+    this.router.navigate(['/details', pointrelai.id]);
+    //this.document.location.href= 'http://localhost:3000/pointsRelais/' + pointrelai.id;
   }
 
 }

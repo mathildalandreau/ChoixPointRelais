@@ -26,7 +26,16 @@ export class PointRelaisService {
     return this.http.get<PointRelai>(API_URL + prId, {headers})
     .pipe(catchError(this.handleError));
   }
+  
+  getPR(id: string): Observable<PointRelai>{
 
+    const url = `${API_URL}/${id}`; 
+    return this.http.get<PointRelai>(url).pipe(
+      tap(_=> this.log(`fetched pointRelai id = ${id}`)),
+      catchError(this.handleErrorBis<PointRelai>(`get point relai id=${id}`))
+    );
+
+  }
   
   createPR(pointrelai: PointRelai) : Observable<any>{
     let body = JSON.stringify(pointrelai);
