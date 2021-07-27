@@ -1,4 +1,5 @@
 import { Adresse } from "./adresse";
+import { Horaire } from "./horaire";
 
 export class PointRelai {
     id!: string;
@@ -6,7 +7,7 @@ export class PointRelai {
     adresse!: Adresse;
     latitude!: string; 
     longitude!: string
-       
+    horaires!: Horaire[];
     
   }
   

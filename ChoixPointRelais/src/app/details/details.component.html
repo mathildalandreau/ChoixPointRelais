@@ -12,13 +12,25 @@
               </tr>
               <tr>
                 <td>Adresse</td>
-                <td><strong>{{ pointRelai.adresse.rue }}</strong></td>
-                <td><strong>{{ pointRelai.adresse.codePostal }}</strong></td>
-                <td><strong>{{ pointRelai.adresse.ville }}</strong></td>
+                <td><strong>{{ pointRelai.adresse.rue}}, {{ pointRelai.adresse.codePostal}} {{ pointRelai.adresse.ville}}</strong></td>
               </tr>
-             
             </tbody>
           </table>
+          <table> 
+            <tbody>
+            
+            <td>Horaires</td>
+             
+               <tr *ngFor='let horaire of pointRelai.horaires'>
+                 <td>{{horaire.jour}}</td>
+                  <td>{{horaire.matin}}</td>
+                  <td>{{horaire.soir}}</td>
+                  <td>{{horaire.jourentier}}</td>
+                
+              </tr>
+            </tbody>
+          </table>
+         
         </div>
         <div class="card-action">
           <a (click)="goBack()" class="waves-effect waves-light btn">Retour</a>
