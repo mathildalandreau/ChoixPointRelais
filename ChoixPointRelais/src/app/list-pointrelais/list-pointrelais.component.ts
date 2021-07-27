@@ -28,9 +28,7 @@ export class ListPointrelaisComponent implements OnInit {
   }
 
   selectPointRelais(pointrelai): void {
-    console.log(pointrelai);
-    console.log(pointrelai.id);
-    this.document.location.href= 'http://localhost:3000/pointsRelais/' + pointrelai.id;
+    this.document.location.href= 'http://localhost:8085/payment/' + pointrelai.id;
   }
 
 }
