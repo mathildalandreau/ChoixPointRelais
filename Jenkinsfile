@@ -1,6 +1,6 @@
 pipeline {
   agent {
-    docker { image 'node:latest' }
+    docker { image 'bertromain/myboot:1.0' }
   }
   stages {
     stage('Install') {
