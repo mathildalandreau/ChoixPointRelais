@@ -30,10 +30,12 @@ export class ListPointrelaisComponent implements OnInit {
   }
 
   selectPointRelais(pointrelai): void {
+
     console.log(pointrelai);
     console.log(pointrelai.id);
     this.router.navigate(['/details', pointrelai.id]);
     //this.document.location.href= 'http://localhost:3000/pointsRelais/' + pointrelai.id;
+
   }
 
 }
