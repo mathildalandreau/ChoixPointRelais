@@ -1,10 +1,10 @@
 <div id="center">
-    <h4>Choisissez un Transporteur :</h4>
+    <h4>Choisissez un point relais:</h4>
     <div class='container'>
         <div id="h4Transporteur">
             <div id="divParentChoixTransporteur">
-                <form class="formChoixTransporteur" *ngFor='let pointrelai of pointRelais'>
-                    <div class="eachLeftPanel">
+                <form class="formChoixTransporteur" *ngFor='let pointrelai of pointRelais' 
+                (click)="selectPointRelais(pointrelai)">
                         <div class="divEachTransporteur">
                             <label>Nom :</label>
                             <label> {{pointrelai.name}} </label>
@@ -13,13 +13,9 @@
                             <label>Ville :</label>
                             <label> {{pointrelai.adresse.ville}} </label>
                         </div>
-                    </div>
-                    <div class="eachRightPanel">
-                        <a #btnChoixTransporteur (click)="selectPointRelais(pointrelai)">choisir ce point relais</a>
-                    </div>
                 </form>
                 <div id="parentLienPanier">
-                    <div> lien pour revenir en arrière </div>
+                    <div (click)="goBackToTransporteur()" class="goBack"> lien pour revenir en arrière </div>
                 </div>
             </div>
         </div>

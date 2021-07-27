@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PointRelai } from '../model/pointrelai';
 import { PointRelaisService } from '../pointrelai.service';
 import { Horaire } from '../model/horaire';
+import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'app-details',
@@ -15,7 +16,8 @@ export class DetailsComponent implements OnInit {
   pointRelai: PointRelai = new PointRelai;
   horaires: Horaire[] = [];
 
-  constructor(private route: ActivatedRoute, private router: Router, private pointRelaisService: PointRelaisService) { }
+  constructor(private route: ActivatedRoute, private router: Router,
+     private pointRelaisService: PointRelaisService, @Inject(DOCUMENT) private document:Document) { }
 
   ngOnInit(): void {
     let id = this.route.snapshot.paramMap.get('id');
@@ -26,6 +28,10 @@ export class DetailsComponent implements OnInit {
 
   goBack(): void {
     this.router.navigate(['']);
+  }
+
+  goToPayment(pointrelai) : void {
+    this.document.location.href= 'http://localhost:8085/payment/' + pointrelai.id;
   }
 
 }
