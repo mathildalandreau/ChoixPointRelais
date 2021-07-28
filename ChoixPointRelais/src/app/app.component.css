@@ -1,0 +1,29 @@
+*{
+	_box-sizing: border-box;
+	font-family: "Gill Sans", sans-serif;
+}
+
+
+#center {
+    display:flex;
+    flex-direction: column;
+    flex-grow:1;
+}
+
+
+#header {
+    font-size: x-large;
+    font-weight: bold;
+    background-color: #E28787;
+	text-align: center;
+	color: white;
+    padding:1vh 1vw;
+}
+
+
+#footer{
+	background-color: #E28787;
+	text-align: center;
+	color: white;
+	padding: 1vh 1vw;
+}

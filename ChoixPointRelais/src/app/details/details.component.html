@@ -1,45 +1,28 @@
-<div *ngIf="pointRelai" class="row">
-    <div class="col s12 m8 offset-m2">
-    <h2 class="header center">{{ pointRelai.name }}</h2>
-    <div class="card horizontal hoverable">
-      <div class="card-stacked">
-        <div class="card-content">
-          <table class="bordered striped">
-            <tbody>
-              <tr>
-                <td>Nom</td>
-                <td><strong>{{ pointRelai.name }}</strong></td>
-              </tr>
-              <tr>
-                <td>Adresse</td>
-                <td><strong>{{ pointRelai.adresse.rue}}, {{ pointRelai.adresse.codePostal}} {{ pointRelai.adresse.ville}}</strong></td>
-              </tr>
-            </tbody>
-          </table>
-          <table> 
-            <tbody>
-            
-            <td>Horaires</td>
-             
-               <tr *ngFor='let horaire of pointRelai.horaires'>
-                 <td>{{horaire.jour}}</td>
-                  <td>{{horaire.matin}}</td>
-                  <td>{{horaire.soir}}</td>
-                  <td>{{horaire.jourentier}}</td>
-                
-              </tr>
-            </tbody>
-          </table>
-         
-        </div>
-        <div class="card-action">
-          <a (click)="goBack()" class="waves-effect waves-light btn">Retour</a>
-          <a (click)= "goToPayment(pointRelai)"> valider ce point relais et payer </a>
-        </div>
-
+<div *ngIf="pointRelai" class="body">
+  <h2 >{{ pointRelai.name }}</h2>
+      <div class="card-content">
+        <div class="adresse">
+          <span class="text"><strong>Adresse</strong></span><br/>
+          <span class="text">{{ pointRelai.adresse.rue}}, {{ pointRelai.adresse.codePostal}} {{ pointRelai.adresse.ville}}</span>
+        </div>     
+        <table class="table"> 
+          <tr >
+            <td class="td"><strong>Horaires</strong></td>
+            <td class="td"><strong>Matin</strong></td>
+            <td class="td"><strong>Après-midi</strong></td>
+            <td class="td"><strong>Journée entière</strong></td>
+          </tr>
+          <tr *ngFor='let horaire of pointRelai.horaires' class="tr">
+            <td class="td2">{{horaire.jour}}</td>
+            <td class="td2">{{horaire.matin}}</td>
+            <td class="td2">{{horaire.soir}}</td>
+            <td class="td2">{{horaire.jourentier}}</td>
+          </tr>
+        </table>
+      </div>
+      <div class="card-action">
+        <div (click)="goBack()" class="goBack">Retour points relais</div>
+        <div (click)= "goToPayment(pointRelai)" class="goBack"> Valider ce point relais et payer </div>
       </div>
     </div>
-    </div>
-    </div>
-    <h4 *ngIf='!pointRelai' class="center">Erreur affichage point relai</h4>
-    
+  <h4 *ngIf='!pointRelai' class="center">Erreur affichage point relai</h4>
